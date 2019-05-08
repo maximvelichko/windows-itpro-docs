@@ -201,8 +201,8 @@ This script returns 0 if Microsoft Defender ATP is registered with the Windows D
 
 ## Logging installation issues
 
-See [Logging installation issues](microsoft-defender-atp-mac-resources#Logging-installation-issues) for more information on how to find the automatically generated log that is created by the installer when an error occurs.
+See [Logging installation issues](microsoft-defender-atp-mac-resources.md#Logging-installation-issues) for more information on how to find the automatically generated log that is created by the installer when an error occurs.
 
 ## Uninstallation
 
-See [Uninstalling](microsoft-defender-atp-mac-resources#Uninstalling) for details on how to remove Windows Defender ATP for Mac from client devices.
+See [Uninstalling](microsoft-defender-atp-mac-resources.md#Uninstalling) for details on how to remove Windows Defender ATP for Mac from client devices.
