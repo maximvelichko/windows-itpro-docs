@@ -3,18 +3,18 @@ title: Installing Microsoft Defender ATP for Mac with JAMF
 description: Describes how to install Microsoft Defender ATP for Mac, using JAMF.
 keywords: microsoft, defender, atp, mac, installation, deploy, uninstallation, intune, jamf, macos, mojave, high sierra, sierra
 search.product: eADQiWindows 10XVcnh
-search.appverid: #met150
+search.appverid: met150
 ms.prod: w10
 ms.mktglfcycl: deploy
 ms.sitesec: library
 ms.pagetype: security
 ms.author: v-maave
 author: martyav
-ms.localizationpriority: #medium
+ms.localizationpriority: medium
 manager: dansimp
 audience: ITPro
 ms.collection: M365-security-compliance 
-ms.topic: #conceptual
+ms.topic: conceptual
 ---
 
 # JAMF-based deployment
@@ -198,18 +198,6 @@ You can check that machines are correctly onboarded by creating a script. For ex
 ```
 
 This script returns 0 if Microsoft Defender ATP is registered with the Windows Defender ATP service, and another exit code if it is not installed or registered.
-
-## Test alert
-
-Run in Terminal the following command. It will download [a harmless file](https://en.wikipedia.org/wiki/EICAR_test_file) which will trigger a test detection.
-
-    ```bash
-    curl -o ~/Downloads/eicar.com.txt http://www.eicar.org/download/eicar.com.txt
-    ```
-
-You will get a "Threats found" notification, you can inspect threat's details in the Protection history. 
-
-Soon after that you'll get an alert in the ATP Portal.
 
 ## Logging installation issues
 

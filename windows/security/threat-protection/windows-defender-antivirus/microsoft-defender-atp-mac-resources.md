@@ -1,20 +1,20 @@
 ---
 title: Microsoft Defender ATP for Mac Resources
-description: Describes resources for Microsoft Defender ATP for Mac, including how to uninstall it, how to collect diagnostic logs, and known issues with the product.
+description: Describes resources for Microsoft Defender ATP for Mac, including how to uninstall it, how to collect diagnostic logs, CLI commands, and known issues with the product.
 keywords: microsoft, defender, atp, mac, installation, deploy, uninstallation, intune, jamf, macos, mojave, high sierra, sierra
 search.product: eADQiWindows 10XVcnh
-search.appverid: #met150
+search.appverid: met150
 ms.prod: w10
 ms.mktglfcycl: deploy
 ms.sitesec: library
 ms.pagetype: security
 ms.author: v-maave
 author: martyav
-ms.localizationpriority: #medium
+ms.localizationpriority: medium
 manager: dansimp
 audience: ITPro
 ms.collection: M365-security-compliance 
-ms.topic: #conceptual
+ms.topic: conceptual
 ---
 
 # Resources
@@ -36,48 +36,31 @@ If you can reproduce a problem, please increase the logging level, run the syste
 1) Increase logging level:
 
 ```bash
-    mavel-mojave:~ testuser$ mdatp --log-level verbose
-    Operation succeeded
+   mavel-mojave:~ testuser$ mdatp log-level --verbose
+   Creating connection to daemon
+   Connection established
+   Operation succeeded
 ```
 
 2) Reproduce the problem
 
 3) Run `mdatp --diagnostic` to backup Defender ATP's logs. The command will print out location with generated zip file.
 
-    ```bash
-    mavel-mojave:~ testuser$ mdatp --diagnostic --create
-    "/Library/Application Support/Microsoft/Defender/wdavdiag/d85e7032-adf8-434a-95aa-ad1d450b9a2f.zip"
-    ```
+   ```bash
+   mavel-mojave:~ testuser$ mdatp --diagnostic
+   Creating connection to daemon
+   Connection established
+   "/Library/Application Support/Microsoft/Defender/wdavdiag/d85e7032-adf8-434a-95aa-ad1d450b9a2f.zip"
+   ```
 
 4) Restore logging level:
 
-    ```bash
-    mavel-mojave:~ testuser$ mdatp --log-level info
-    Operation succeeded
-    ```
-
-## Managing from the command line
-
-Important tasks, such as controlling product settings and triggering on-demand scans, can be done from the command line:
-
-|Group        |Scenario                                   |Command                                                                |
-|-------------|-------------------------------------------|-----------------------------------------------------------------------|
-|Configuration|Turn on/off real-time protection           |`mdatp --config rtp [true/false]`                                      |
-|Configuration|Turn on/off cloud protection               |`mdatp --config cloud [true/false]`                                    |
-|Configuration|Turn on/off product diagnostics            |`mdatp --config diagnostic [true/false]`                               |
-|Configuration|Turn on/off automatic sample submission    |`mdatp --config sample-submission [true/false]`                        |
-|Configuration|Turn on PUA protection                     |`mdatp --threat --type-handling potentially_unwanted_application block`|
-|Configuration|Turn off PUA protection                    |`mdatp --threat --type-handling potentially_unwanted_application off`  |
-|Configuration|Turn on audit mode for PUA protection      |`mdatp --threat --type-handling potentially_unwanted_application audit`|
-|Diagnostics  |Change the log level                       |`mdatp --log-level [error/warning/info/verbose]`                       |
-|Diagnostics  |Generate diagnostic logs                   |`mdatp --diagnostic --create`                                          |
-|Health       |Check the product's health                 |`mdatp --health`                                                       |
-|Health       |Prints a single health metric              |`mdatp --health [metric]`                                              |
-|Protection   |Scan a path                                |`mdatp --scan --path [path]`                                           |
-|Protection   |Do a quick scan                            |`mdatp --scan --quick`                                                 |
-|Protection   |Do a full scan                             |`mdatp --scan --full`                                                  |
-|Protection   |Cancel an ongoing on-demand scan           |`mdatp --scan --cancel`                                                |
-|Protection   |Request a definition update                |`mdatp --definition-update`                                            |
+   ```bash
+   mavel-mojave:~ testuser$ mdatp log-level --info
+   Creating connection to daemon
+   Connection established
+   Operation succeeded
+   ```
 
 ## Logging installation issues
 
@@ -125,6 +108,28 @@ If you are running JAMF, your policy should contain a single script:
 ![Microsoft Defender uninstall script screenshot](images/MDATP_27_UninstallScript.png)
 
 Configure the appropriate scope in the **Scope** tab to specify the machines that will receive this policy.
+
+## Configuring from the command line
+
+Important tasks, such as controlling product settings and triggering on-demand scans, can be done from the command line:
+
+|Group        |Scenario                                   |Command                                                                |
+|-------------|-------------------------------------------|-----------------------------------------------------------------------|
+|Configuration|Turn on/off real-time protection           |`mdatp config --rtp [true/false]`                                      |
+|Configuration|Turn on/off cloud protection               |`mdatp config --cloud [true/false]`                                    |
+|Configuration|Turn on/off product diagnostics            |`mdatp config --diagnostic [true/false]`                               |
+|Configuration|Turn on/off automatic sample submission    |`mdatp config --sample-submission [true/false]`                        |
+|Configuration|Turn on PUA protection                     |`mdatp threat --type-handling --potentially_unwanted_application block`|
+|Configuration|Turn off PUA protection                    |`mdatp threat --type-handling --potentially_unwanted_application off`  |
+|Configuration|Turn on audit mode for PUA protection      |`mdatp threat --type-handling --potentially_unwanted_application audit`|
+|Diagnostics  |Change the log level                       |`mdatp log-level --[error/warning/info/verbose]`                       |
+|Diagnostics  |Generate diagnostic logs                   |`mdatp --diagnostic`                                                   |
+|Health       |Check the product's health                 |`mdatp --health`                                                       |
+|Protection   |Scan a path                                |`mdatp scan --path [path]`                                             |
+|Protection   |Do a quick scan                            |`mdatp scan --quick`                                                   |
+|Protection   |Do a full scan                             |`mdatp scan --full`                                                    |
+|Protection   |Cancel an ongoing on-demand scan           |`mdatp scan --cancel`                                                  |
+|Protection   |Request a definition update                |`mdatp --signature-update`                                             |
 
 ## What to expect in the ATP portal
 

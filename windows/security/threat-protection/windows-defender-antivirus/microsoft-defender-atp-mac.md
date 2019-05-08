@@ -44,9 +44,9 @@ In general you'll need to take the following steps:
 
 - Ensure you have a Windows Defender ATP subscription and have access to the Windows Defender ATP Portal
 - Deploy Microsoft Defender ATP for Mac using one of the following deployment methods:
-  - [Microsoft Intune-based deployment](microsoft-defender-atp-mac-install-with-intune)
-  - [JAMF-based deployment](microsoft-defender-atp-mac-install-with-jamf)
-  - [Manual deployment](microsoft-defender-atp-mac-install-manually)
+  - [Microsoft Intune-based deployment](microsoft-defender-atp-mac-install-with-intune.md)
+  - [JAMF-based deployment](microsoft-defender-atp-mac-install-with-jamf.md)
+  - [Manual deployment](microsoft-defender-atp-mac-install-manually.md)
 
 ### Prerequisites
 
@@ -79,9 +79,9 @@ To test that a connection is not blocked, open `https://x.cp.wd.microsoft.com/ap
     OK
 ```
 
-We recommend to keep [System Integrity Protection](https://support.apple.com/en-us/HT204899) ([Wiki](https://en.wikipedia.org/wiki/System_Integrity_Protection) enabled (default setting) on client machines.
+We recommend to keep [System Integrity Protection](https://support.apple.com/en-us/HT204899) ([Wiki](https://en.wikipedia.org/wiki/System_Integrity_Protection)) enabled (default setting) on client machines.
 SIP is a built-in macOS security feature that prevents low-level tampering with the OS.
 
 ## Resources
 
-For further information on logging, uninstalling, the ATP portal, or known issues, see our [Resources](microsoft-defender-atp-mac-resources) page.
+For further information on logging, uninstalling, the ATP portal, or known issues, see our [Resources](microsoft-defender-atp-mac-resources.md) page.
